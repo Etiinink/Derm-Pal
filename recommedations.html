@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Recommendations</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <ul class="nav_bar">
+        <a href="predict.html">Skintype Classifier</a>
+        <a href="acnepredict.html">Acne Diagnosis</a>
+        <a href="recommendations.html">Recommendations</a>
+    </ul>
+    <div class="main">
+        <div class="content-container">
+            <h2>Get Skincare Recommendations</h2>
+            <p>Select your skin type and/or acne type to get personalized skincare recommendations.</p>
+            
+            <label for="skin-type">Skin Type:</label>
+            <select id="skin-type">
+                <option value="">--Select Skin Type--</option>
+                <option value="Dry">Dry</option>
+                <option value="Oily">Oily</option>
+                <option value="Normal">Normal</option>
+            </select>
+            <br><br>
+            
+            <label for="acne-type">Acne Type:</label>
+            <select id="acne-type">
+                <option value="">--Select Acne Type--</option>
+                <option value="Comedones">Comedones</option>
+                <option value="Cystic/Nodular">Cystic/Nodular</option>
+                <option value="Pustules/Papules">Pustules/Papules</option>
+            </select>
+            <br><br>
+            
+            <button style="width: 150px;" onclick="showRecommendation()">Get Recommendation</button>
+            <br><br>
+            
+            <div id="recommendation-result"></div>
+        </div>
+    </div>
+
+    <script>
+        const skinTypeRecommendations = {
+            'Dry': "Use gentle cleansers and heavy moisturizers. Avoid hot water and harsh soaps.",
+            'Oily': "Use oil-free cleansers and light moisturizers. Avoid heavy creams and alcohol-based products.",
+            'Normal': "Maintain a regular skincare routine with a balanced cleanser and moisturizer."
+        };
+
+        const acneRecommendations = {
+            'Comedones': "Use salicylic acid or benzoyl peroxide treatments. Avoid oily skincare products.",
+            'Cystic/Nodular': "Consult a dermatologist for prescription treatments. Use gentle, non-irritating products.",
+            'Pustules/Papules': "Use topical treatments containing benzoyl peroxide or sulfur. Avoid picking or squeezing."
+        };
+
+        function showRecommendation() {
+            const skinType = document.getElementById("skin-type").value;
+            const acneType = document.getElementById("acne-type").value;
+            let result = "";
+
+            if (skinType && skinTypeRecommendations[skinType]) {
+                result += `<strong>Skin Type:</strong> ${skinType}<br><strong>Recommendation:</strong> ${skinTypeRecommendations[skinType]}<br><br>`;
+            }
+
+            if (acneType && acneRecommendations[acneType]) {
+                result += `<strong>Acne Type:</strong> ${acneType}<br><strong>Recommendation:</strong> ${acneRecommendations[acneType]}`;
+            }
+
+            if (!result) {
+                result = "Please select a valid skin type or acne type to get recommendations.";
+            }
+
+            document.getElementById("recommendation-result").innerHTML = result;
+        }
+    </script>
+</body>
+</html>

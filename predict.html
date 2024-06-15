@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Skintype Predict</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .main {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 80vh;
+        }
+        .content-container {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <ul class="nav_bar">
+        <a href="predict.html">Skintype Classifier</a>
+        <a href="acnepredict.html">Acne Diagnosis</a>
+        <a href="recommedations.html">Recommendations</a>
+    </ul>
+    <div class="main">
+        <div class="content-container">
+            <input style="color:#F4C2C2; height: 70px;width:200px" id="image-selector" type="file">
+            <button style="background-color: #F4C2C2; color: white;" id="predict-button">Predict</button>
+            <p style="font-weight: bold;">Skin-Type</p>
+            <p id="prediction-result"></p>
+            <img id="selected-image" style="height: 224px; width: 224px;" src=""/>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script>
+        let base64Image;
+        $("#image-selector").change(function(){
+            let reader = new FileReader();
+            reader.onload = function(e) {
+                let dataURL = reader.result;
+                $('#selected-image').attr('src', dataURL);
+                base64Image = dataURL.split(',')[1];
+                console.log('Base64 image data: ', base64Image);
+            }
+            reader.readAsDataURL($("#image-selector")[0].files[0]);
+            $("#prediction-result").text("");
+        });
+
+        $("#predict-button").click(function(event){
+            if (!base64Image) {
+                $("#prediction-result").text("Please select an image first.");
+                return;
+            }
+
+            let message = {
+                image: `data:image/jpeg;base64,${base64Image}`
+            };
+            console.log('Message to send: ', message);
+            $.ajax({
+                url: "http://127.0.0.1:5000/predict_skin_type",
+                type: "POST",
+                contentType: "application/json",
+                data: JSON.stringify(message),
+                success: function(response) {
+                    console.log('Response received: ', response);
+                    if (response && response.Prediction) {
+                        $("#prediction-result").text(response.Prediction);
+                    } else {
+                        $("#prediction-result").text("Invalid response format.");
+                    }
+                },
+                error: function(xhr, status, error) {
+                    $("#prediction-result").text("An error occurred during prediction.");
+                    console.log('Error: ', error);
+                }
+            });
+        });
+    </script>
+</body>
+</html>

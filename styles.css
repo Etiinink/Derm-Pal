@@ -1,0 +1,92 @@
+a {
+    display: block;
+    text-decoration: none;
+    color: #f2f2f2;
+    float: left;
+    padding: 10px 10px 10px 0px;
+}
+
+a:hover {
+    background-color: black;
+}
+
+body {
+    font-family: Montserrat;
+    font-weight: 400;
+    margin: 0;
+    padding: 0;
+    color: #F4C2C2;
+}
+
+button {
+    border: 0;
+    width: 75px;
+    height: 50px;
+    background-color: #F4C2C2;
+    color: white;
+    cursor: pointer;
+}
+
+.nav_bar {
+    background-color: #F4C2C2;
+    height: 40px;
+    width: 100%;
+    text-align: center;
+    padding: 10px 20px;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    min-height: calc(100vh - 100px);
+    text-align: center;
+}
+
+.content-container {
+    width: 80%;
+    max-width: 600px;
+    margin: 20px;
+}
+
+#selected-image {
+    display: block;
+    margin: 20px auto;
+    height: 224px;
+    width: 224px;
+}
+
+button {
+    display: block;
+    margin: 20px auto;
+}
+
+input[type="file"]::file-selector-button {
+    border: 2px solid white;
+    padding: 0.2em 0.4em;
+    border-radius: 0.2em;
+    height: 50px;
+    background-color: #F4C2C2;
+    transition: 1s;
+}
+
+input[type="file"]::file-selector-button:hover {
+    background-color: black;
+    border: 2px solid white;
+}
+
+#recommendation-result {
+    text-align: left;
+    margin-top: 20px;
+}
+
+@media (max-width: 600px) {
+    .nav_bar {
+        flex-direction: column;
+    }
+}

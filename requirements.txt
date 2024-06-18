@@ -1,7 +1,5 @@
-tensorflow
-Flask
-uvicorn
-python-multipart
-pillow
-matplotlib
-numpy
+Flask==2.0.3
+flask-cors==3.0.10
+tensorflow==2.8.0
+Pillow==9.0.1
+numpy==1.21.5

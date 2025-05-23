@@ -90,7 +90,7 @@ DermPal proudly emerged as one of the top ten (10) finalists in the RAIN Hackath
 🚀 Implementation Plan & Scalability (Future Roadmap)
 Our vision for DermPal extends beyond the hackathon, with a multi-phase plan for growth and impact:
 
-Phase 1: Model Refinement & Clinical Validation: Further expand diverse data collection, optimize AI models with continuous user feedback, and seek preliminary clinical review for validation.
+Phase 1: Model Refinement & Clinical Validation: Expand diverse data collection further, optimise AI models with continuous user feedback, and seek preliminary clinical review for validation.
 
 Phase 2: Feature Expansion & UX Enhancement: Implement user accounts for progress tracking, integrate comprehensive educational content, explore pilot teledermatology integrations, and develop native mobile applications.
 
@@ -101,7 +101,7 @@ To set up DermPal on your local machine:
 
 Clone the repository:
 
-git clone https://github.com/your-username/DermPal.git
+git clone https://github.com/Etiinink/DermPal.git
 cd DermPal
 
 Create a virtual environment (recommended):
